@@ -6,11 +6,13 @@ export default class Controller {
     #model
     #tableView
     #modalView
+    #apiService
 
-    constructor(tableTarget) {
+    constructor(tableTarget, apiService) {
         this.#model = new Model()
         this.#tableView = new TableView(tableTarget)
         this.#modalView = new ModalView()
+        this.#apiService = apiService
 
         this.#model.bindModelChanged(contragents => this.#onModelChanged(contragents))
 
@@ -26,12 +28,13 @@ export default class Controller {
         })
     }
 
-    startCreatingNew() {
-        this.#modalView.open()
+    refresh() {
+        this.#apiService.loadAll()
+            .then(contragents => contragents.forEach(c => this.#onAdd(c)))
     }
 
-    setContragents(contragents) {
-        contragents.forEach(c => this.#onAdd(c))
+    startCreatingNew() {
+        this.#modalView.open()
     }
 
     #onDelete(id) {
@@ -39,11 +42,13 @@ export default class Controller {
     }
 
     #onEdit(contragent) {
-        this.#model.editContragent(contragent)
+        this.#apiService.save(contragent)
+            .then(contragent => this.#model.editContragent(contragent))
     }
 
     #onAdd(contragent) {
-        this.#model.addContragent(contragent)
+        this.#apiService.save(contragent)
+            .then(contragent => this.#model.addContragent(contragent))
     }
 
     #onModelChanged(contragents) {

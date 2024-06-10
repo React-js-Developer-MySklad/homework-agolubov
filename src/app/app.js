@@ -1,18 +1,11 @@
 import html from "./app.html";
 import './app.css'
-import {ContragentsComponent} from "./contragents";
+import {ContragentsComponent, ContragentsApi} from "./contragents";
 
 const rootElement = document.getElementById('root');
 rootElement.innerHTML = html;
 
-const contragentsComponent = new ContragentsComponent(document.getElementById('table'))
-const addButton = rootElement.querySelector("#contragent-create-button");
-addButton.addEventListener("click", function() {
-    contragentsComponent.startCreatingNew()
-});
-
-
-const contragents = [
+const api = new ContragentsApi([
     {
         name: "1",
         address: "1",
@@ -31,5 +24,12 @@ const contragents = [
         inn: "3",
         kpp: "3"
     }
-]
-contragentsComponent.setContragents(contragents)
+])
+
+const contragentsComponent = new ContragentsComponent(document.getElementById('table'), api)
+const addButton = rootElement.querySelector("#contragent-create-button");
+addButton.addEventListener("click", function() {
+    contragentsComponent.startCreatingNew()
+});
+
+contragentsComponent.refresh()

@@ -23,10 +23,6 @@ export default class View {
     }
 
     #createRow(contragent) {
-        if (contragent.id === null || contragent.id === undefined) {
-            return
-        }
-
         const row = this.#template.content.cloneNode(true)
 
         const root = row.querySelector('tr')

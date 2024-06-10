@@ -1,29 +1,20 @@
-import {integerGenerator} from "../util";
 
 export default class Model {
     #data = []
     #onChange
-    #idGenerator
 
     bindModelChanged(onChange) {
         this.#onChange = onChange
-        this.#idGenerator = integerGenerator()
     }
 
     addContragent(contragent) {
-        if (contragent.id === undefined || contragent.id === null) {
-            contragent = {
-                ...contragent,
-                id: this.#idGenerator.next().value
-            }
-        }
         this.#data.push(contragent)
         this.#commit()
     }
 
     editContragent(contragent) {
         this.#data = this.#data.map(c => {
-            if (c.id === contragent.id && c ) {
+            if (c.id === contragent.id) {
                 return contragent
             }
             return c
