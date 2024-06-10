@@ -7,6 +7,12 @@ export default class Model {
         this.#onChange = onChange
     }
 
+    setContragents(contragents) {
+        this.#data = []
+        contragents.forEach(c => this.#data.push(c))
+        this.#commit()
+    }
+
     addContragent(contragent) {
         this.#data.push(contragent)
         this.#commit()

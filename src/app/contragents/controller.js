@@ -30,7 +30,7 @@ export default class Controller {
 
     refresh() {
         this.#apiService.loadAll()
-            .then(contragents => contragents.forEach(c => this.#onAdd(c)))
+            .then(contragents => this.#model.setContragents(contragents))
     }
 
     startCreatingNew() {
