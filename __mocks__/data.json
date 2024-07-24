@@ -1,0 +1,39 @@
+{
+  "agent": [
+    {
+      "id": "2",
+      "name": "2",
+      "address": "2",
+      "inn": "2",
+      "kpp": "2"
+    },
+    {
+      "id": "0cfe",
+      "name": "2.7",
+      "address": "123",
+      "inn": "12345678901",
+      "kpp": "123456789"
+    },
+    {
+      "id": "146e",
+      "name": "Metrifant Queue - Alert",
+      "address": "address",
+      "inn": "12345678901",
+      "kpp": "123456789"
+    },
+    {
+      "id": "ac6b",
+      "name": "Metrifant Queue - Alert",
+      "address": "address",
+      "inn": "12345678901",
+      "kpp": "123456789"
+    },
+    {
+      "id": "1aac",
+      "name": "Metrifant Queue - Alert",
+      "address": "Surgutskaya street, 118",
+      "inn": "12345678901",
+      "kpp": "123456789"
+    }
+  ]
+}
